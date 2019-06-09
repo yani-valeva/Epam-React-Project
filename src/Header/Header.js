@@ -3,6 +3,7 @@ import styles from './Header.module.css';
 import logo from '../logo.svg';
 import Button from '../UI/Button/Button';
 import Input from '../UI/Input/Input';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const header = props =>
     (<header>
@@ -15,7 +16,10 @@ const header = props =>
                 </div>
             </div>
             <div className={`${styles.HeaderContainer} ${styles.HeadUI}`}>
-                <Input />
+                <div className={styles.InputContainer}>
+                    <FontAwesomeIcon icon="search" className={styles.SearchIcon} />
+                    <Input />
+                </div>
                 <Button>Search</Button>
             </div>
         </div>
