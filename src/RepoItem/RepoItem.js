@@ -7,8 +7,8 @@ const repoItem = props =>
     (
         <>
             <div className={styles.Wrapper}>
-                <div class={styles.Container}>
-                    <div class={styles.InnerContainer}>
+                <div className={styles.Container}>
+                    <div className={styles.InnerContainer}>
                         <div>title/fullname</div>
                         <div>title name</div>
                         <FontAwesomeIcon icon="chevron-right" className={styles.Arrow} />
@@ -17,8 +17,8 @@ const repoItem = props =>
                         {/* <Link to="/">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis velit quo quisquam!</Link> */}
                     </div>
                 </div>
-                <div class={`${styles.Container} ${styles.Even}`}>
-                    <div class={styles.InnerContainer}>
+                <div className={`${styles.Container} ${styles.Even}`}>
+                    <div className={styles.InnerContainer}>
                         <div>title/fullname</div>
                         <div>title name</div>
                         <FontAwesomeIcon icon="chevron-right" className={styles.Arrow} />
@@ -27,8 +27,8 @@ const repoItem = props =>
                         {/* <Link to="/">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis velit quo quisquam!</Link> */}
                     </div>
                 </div>
-                <div class={styles.Container}>
-                    <div class={styles.InnerContainer}>
+                <div className={styles.Container}>
+                    <div className={styles.InnerContainer}>
                         <div>title/fullname</div>
                         <div>title name</div>
                         <FontAwesomeIcon icon="chevron-right" className={styles.Arrow} />
