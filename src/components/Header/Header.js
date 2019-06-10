@@ -1,29 +1,35 @@
-import React from 'react';
+import React, {Component} from 'react';
 import styles from './Header.module.css';
 import logo from '../../logo.svg';
 import Button from '../../UI/Button/Button';
-import Input from '../../UI/Input/Input';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const header = props =>
-    (<header>
-        <div className={`${styles.Header} ${styles.HeaderContainer}`}>
-            <div className={styles.HeaderContainer}>
-                <img src={logo} alt="logo" />
-                <div className={styles.HeaderSubContainers}>
-                    <h2 className={styles.HeadH2}>Github repo explorer</h2>
-                    <h4 className={styles.HeadH4}>learning project created by <span className={styles.Underline}>John Doe</span></h4>
+class Header extends Component {
+    handleSearchSubmit = () => {
+        const query = this.refs.search.value.trim();
+        query !== '' && this.props.route.history.push(`/${query}`);
+    }
+    
+    render() {
+        return (<header>
+            <div className={`${styles.Header} ${styles.HeaderContainer}`}>
+                <div className={styles.HeaderContainer}>
+                    <img src={logo} alt="logo" />
+                    <div className={styles.HeaderSubContainers}>
+                        <h2 className={styles.HeadH2}>Github repo explorer</h2>
+                        <h4 className={styles.HeadH4}>learning project created by <span className={styles.Underline}>John Doe</span></h4>
+                    </div>
+                </div>
+                <div className={`${styles.HeaderContainer} ${styles.HeadUI}`}>
+                    <div className={styles.InputContainer}>
+                        <FontAwesomeIcon icon="search" className={styles.SearchIcon} />
+                        <input className={`${styles.Input}`} placeholder="Search for a github repo" ref="search" />
+                    </div>
+                    <Button onClick={this.handleSearchSubmit}>Search</Button>
                 </div>
             </div>
-            <div className={`${styles.HeaderContainer} ${styles.HeadUI}`}>
-                <div className={styles.InputContainer}>
-                    <FontAwesomeIcon icon="search" className={styles.SearchIcon} />
-                    <Input />
-                </div>
-                <Button>Search</Button>
-            </div>
-        </div>
-    </header>);
+        </header>);
+    }
+}
 
-
-export default header;
+export default Header;

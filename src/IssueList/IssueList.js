@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from './IssueItem.module.css';
+import styles from './IssueList.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const issueItem = props =>
+const issueList = props =>
     (
         <>
             <div className={styles.Wrapper}>
@@ -35,6 +35,6 @@ const issueItem = props =>
                 </div>
             </div>
         </>
-    );
+    );  
 
-export default issueItem;
+export default issueList;

@@ -4,19 +4,24 @@ import Header from '../components/Header/Header';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { faSearch, faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
-// import RepoItem from '../RepoItem/RepoItem';
-import IssueItem from '../IssueItem/IssueItem';
+import RepoList from '../RepoList/RepoList';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import IssueList from '../IssueList/IssueList';
+
 
 library.add(fab, faSearch, faChevronRight, faChevronLeft);
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      {/* <RepoItem /> */}
-      <IssueItem />
-    </div>
-    
+    <Router>
+      <div className="App">
+        <Switch>
+          <Route exact path="/:query/:page?" render={(route) => <><Header route={route} /> <RepoList route={route} /></> }/> 
+          <Route exact path="/:repoId(\d+)/:page?" render={(route) => <><Header route={route} /> <IssueList route={route} /></> }/>
+          <Route exact path="/" render={(route) => <> <Header route={route} /> Please serach for a repo! </>}/>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 

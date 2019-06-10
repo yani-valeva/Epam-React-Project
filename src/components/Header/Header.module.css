@@ -57,3 +57,9 @@
     color: #666666;
     margin-right: 3px;
 }
+
+.Input {
+    border: none;
+    background-color:transparent;
+    outline: none;
+}
