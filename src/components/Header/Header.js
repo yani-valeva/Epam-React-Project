@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './Header.module.css';
-import logo from '../logo.svg';
-import Button from '../UI/Button/Button';
-import Input from '../UI/Input/Input';
+import logo from '../../logo.svg';
+import Button from '../../UI/Button/Button';
+import Input from '../../UI/Input/Input';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const header = props =>
