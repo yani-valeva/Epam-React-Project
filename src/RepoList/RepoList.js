@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styles from './RepoList.module.css';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class RepoList extends Component {
@@ -326,25 +326,6 @@ class RepoList extends Component {
             ]
           }
 
-        data.items.map(e =>
-            (
-                <>
-                    <div className={styles.Wrapper}>
-                        <div className={styles.Container}>
-                            <div className={styles.InnerContainer}>
-                                <div><strong>{data.items[0].full_name}</strong></div>
-                                <div>{data.items[0].name}</div>
-                                <FontAwesomeIcon icon="chevron-right" className={styles.Arrow} />
-                                <br />
-                                <div>{data.items[0].description}</div>
-                                {/* <Link to="/">{data.items[0].url}</Link> */}
-                            </div>
-                        </div>
-                    </div>
-                </>
-            )
-        )
-
         return data.items.map((e, i) =>
             (
                 <div className={styles.Wrapper} key={e.id}>
@@ -355,12 +336,12 @@ class RepoList extends Component {
                             <FontAwesomeIcon icon="chevron-right" className={styles.Arrow} />
                             <br />
                             <div>{e.description}</div>
-                            {/* <Link to="/">{e.url}</Link> */}
+                            <Link to="/">{e.url}</Link>
                         </div>
                     </div>
                 </div>
             )
-        )
+        );
     }
 }
 
