@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styles from './RepoList.module.css';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-class RepoList extends Component {
+class RepoList extends React.Component {
 
     state = {
         repoItems: []

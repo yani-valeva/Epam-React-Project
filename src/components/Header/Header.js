@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
+import React from 'react';
 import styles from './Header.module.css';
 import logo from '../../logo.svg';
 import Button from '../../UI/Button/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-class Header extends Component {
+class Header extends React.Component {
     handleSearchSubmit = () => {
         const query = this.refs.search.value.trim();
         query !== '' && this.props.route.history.push(`/${query}`);

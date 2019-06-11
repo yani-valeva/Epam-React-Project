@@ -7,6 +7,7 @@ import { faSearch, faChevronRight, faChevronLeft } from '@fortawesome/free-solid
 import RepoList from '../RepoList/RepoList';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import IssueList from '../IssueList/IssueList';
+import Message from '../components/Message/Message';
 
 
 library.add(fab, faSearch, faChevronRight, faChevronLeft);
@@ -18,7 +19,7 @@ function App() {
         <Switch>
           <Route exact path="/:query/:page?" render={(route) => <><Header route={route} /> <RepoList route={route} /></> }/> 
           <Route exact path="/:repoId(\d+)/:page?" render={(route) => <><Header route={route} /> <IssueList route={route} /></> }/>
-          <Route exact path="/" render={(route) => <> <Header route={route} /> Please serach for a repo! </>}/>
+          <Route exact path="/" render={(route) => <> <Header route={route} /> <Message route={route} /> </>}/>
         </Switch>
       </div>
     </Router>
