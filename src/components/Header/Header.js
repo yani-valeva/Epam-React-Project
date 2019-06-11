@@ -11,7 +11,7 @@ class Header extends React.Component {
     }
     
     render() {
-        return (<header>
+        return (
             <div className={`${styles.Header} ${styles.HeaderContainer}`}>
                 <div className={styles.HeaderContainer}>
                     <img src={logo} alt="logo" />
@@ -27,8 +27,7 @@ class Header extends React.Component {
                     </div>
                     <Button onClick={this.handleSearchSubmit}>Search</Button>
                 </div>
-            </div>
-        </header>);
+            </div>);
     }
 }
 

@@ -17,8 +17,8 @@ function App() {
     <Router>
       <div className="App">
         <Switch>
-          <Route exact path="/:query/:page?" render={(route) => <><Header route={route} /> <RepoList route={route} /></> }/> 
-          <Route exact path="/:repoId(\d+)/:page?" render={(route) => <><Header route={route} /> <IssueList route={route} /></> }/>
+          <Route exact path="/:repoId(\d+)/:page(\d+)?" render={(route) => <><Header route={route} /> <IssueList route={route} /></> }/>
+          <Route exact path="/:query/:page?" render={(route) => <><Header route={route} /> <RepoList route={route} /></> }/>   
           <Route exact path="/" render={(route) => <> <Header route={route} /> <Message route={route} /> </>}/>
         </Switch>
       </div>

@@ -53,9 +53,11 @@
 .IssueUser {
     font-size: 12px;
     color: #000000;
+    font-weight: 300;
 }
 
 .Body {
     font-size: 14px;
     padding-left: 83px;
+    font-weight: 300;
 }
