@@ -9,7 +9,6 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import IssueList from '../IssueList/IssueList';
 import Message from '../components/Message/Message';
 
-
 library.add(fab, faSearch, faChevronRight, faChevronLeft);
 
 function App() {
@@ -17,9 +16,10 @@ function App() {
     <Router>
       <div className="App">
         <Switch>
-          <Route exact path="/:repoId(\d+)/:page(\d+)?" render={(route) => <><Header route={route} /> <IssueList route={route} /></> }/>
-          <Route exact path="/:query/:page?" render={(route) => <><Header route={route} /> <RepoList route={route} /></> }/>   
-          <Route exact path="/" render={(route) => <> <Header route={route} /> <Message route={route} /> </>}/>
+          <Route exact path="/issues/:repoId(\d+)/:page(\d+)?" render={(route) => <><Header route={route} /> <IssueList route={route} /></>} />
+          <Route exact path="/repos/:query/:page?" render={(route) => <><Header route={route} /> <RepoList route={route} /></>} />
+          <Route exact path="/" render={(route) => <> <Header route={route} /> <Message route={route} /> </>} />
+          <Route render={() => <>Page not found!</>} />
         </Switch>
       </div>
     </Router>
