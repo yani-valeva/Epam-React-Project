@@ -10,6 +10,11 @@
     padding-left: 10px;
 }
 
+.searchedResult {
+    padding: 22px 0px;
+    padding-left: 10px;
+}
+
 .innerContainer {
     border-left: 4px solid #CB4CB6;
     padding-left: 13px;
