@@ -8,7 +8,12 @@ class IssueList extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this.props.match)
+        const firstname = this.props.match.params.firstname;
+        const lastname = this.props.match.params.lastname;
+        console.log(firstname, lastname);
+        fetch(`https://api.github.com/repos/${firstname}/${lastname}/issues`)
+            .then(res => res.json())
+            .then(data => this.setState({ issueItems: data}));
     }
 
     render() {
