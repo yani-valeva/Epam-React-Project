@@ -1,26 +1,26 @@
-.Wrapper {
+.wrapper {
     background-color: #E5E5E5;
     padding-left: 18px;
     padding-right: 18px;
 }
 
-.Container {
+.container {
     padding: 15px 0px;
     border-radius: 10px;
     padding-left: 10px;
 }
 
-.InnerContainer {
+.innerContainer {
     border-left: 4px solid #CB4CB6;
     padding-left: 13px;
     padding-right: 13px;
 }
 
-.Even {
+.even {
     background-color: #FFFFFF;
 }
 
-.Arrow {
+.arrow {
     color: #999999;
     float: right;   
 }

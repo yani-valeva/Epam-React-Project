@@ -887,33 +887,33 @@ class IssueList extends React.Component {
                 borderColor: '#' + e.color
             };
 
-            return <div className={styles.Labels} style={divStyle}>{e.name}</div>
+            return <div className={styles.labels} style={divStyle} key={e.id}>{e.name}</div>
         });
 
         const issuesData = issues.map((e, i) => (
-            <div className={styles.Container} key={e.id}>
-                <div className={styles.ReporterContainer}>
-                    <img className={styles.AvatarImg} src={issues[i].user.avatar_url}
+            <div className={styles.container} key={e.id}>
+                <div className={styles.reporterContainer}>
+                    <img className={styles.avatarImg} src={issues[i].user.avatar_url}
                         alt="profile" />
-                    <div className={styles.TitleContainer}>
-                        <div className={styles.Title}>
+                    <div className={styles.titleContainer}>
+                        <div className={styles.title}>
                             {issues[i].title}
                         </div>
-                        <div className={styles.IssueUser}>
+                        <div className={styles.issueUser}>
                             <span>#{issues[i].number}:</span> opened by
                                 <strong> {issues[i].user.login}</strong>
                         </div>
                     </div>
                 </div>
-                <div className={styles.Body}>{issues[i].body}</div>
-                <div className={styles.LabelContainer}>{labelsData}</div>
+                <div className={styles.body}>{issues[i].body}</div>
+                <div className={styles.labelContainer}>{labelsData}</div>
             </div>
         ));
 
         return (
-            <div className={styles.Wrapper} >
-                <div className={styles.GoBack}>
-                    <FontAwesomeIcon icon="chevron-left" className={styles.ArrowLeft} />
+            <div className={styles.wrapper} >
+                <div className={styles.goBack}>
+                    <FontAwesomeIcon icon="chevron-left" className={styles.arrowLeft} />
                     <div>GO BACK</div>
                 </div>
                 {issuesData}

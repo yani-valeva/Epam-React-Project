@@ -12,18 +12,18 @@ class Header extends React.Component {
     
     render() {
         return (
-            <div className={`${styles.Header} ${styles.HeaderContainer}`}>
-                <div className={styles.HeaderContainer}>
+            <div className={`${styles.header} ${styles.headerContainer}`}>
+                <div className={styles.headerContainer}>
                     <img src={logo} alt="logo" />
-                    <div className={styles.HeaderSubContainers}>
-                        <h2 className={styles.HeadH2}>Github repo explorer</h2>
-                        <h4 className={styles.HeadH4}>learning project created by <span className={styles.Underline}>John Doe</span></h4>
+                    <div className={styles.headerSubContainers}>
+                        <h2 className={styles.headH2}>Github repo explorer</h2>
+                        <h4 className={styles.headH4}>learning project created by <span className={styles.underline}>John Doe</span></h4>
                     </div>
                 </div>
-                <div className={`${styles.HeaderContainer} ${styles.HeadUI}`}>
-                    <div className={styles.InputContainer}>
-                        <FontAwesomeIcon icon="search" className={styles.SearchIcon} />
-                        <input className={`${styles.Input}`} placeholder="Search for a github repo" ref="search" />
+                <div className={`${styles.headerContainer} ${styles.HeadUI}`}>
+                    <div className={styles.inputContainer}>
+                        <FontAwesomeIcon icon="search" className={styles.searchIcon} />
+                        <input className={`${styles.input}`} placeholder="Search for a github repo" ref="search" />
                     </div>
                     <Button onClick={this.handleSearchSubmit}>Search</Button>
                 </div>

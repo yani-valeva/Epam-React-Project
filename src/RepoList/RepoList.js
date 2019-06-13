@@ -328,12 +328,12 @@ class RepoList extends React.Component {
 
         return data.items.map((e, i) =>
             (
-                <div className={styles.Wrapper} key={e.id}>
-                    <div className={`${styles.Container} ${i % 2 !== 0 && styles.Even}`}>
-                        <div className={styles.InnerContainer}>
+                <div className={styles.wrapper} key={e.id}>
+                    <div className={`${styles.container} ${i % 2 !== 0 && styles.even}`}>
+                        <div className={styles.innerContainer}>
                             <div><strong>{e.full_name}</strong></div>
                             <div>{e.name}</div>
-                            <FontAwesomeIcon icon="chevron-right" className={styles.Arrow} />
+                            <FontAwesomeIcon icon="chevron-right" className={styles.arrow} />
                             <br />
                             <div>{e.description}</div>
                             <Link to="/">{e.url}</Link>
