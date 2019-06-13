@@ -9,16 +9,13 @@ class RepoList extends React.Component {
   };
 
   componentDidMount() {
-    const query = this.props.route.match.params.query ? this.props.route.match.params.query.trim() : "";
+    const query = this.props.match.params.query ? this.props.match.params.query.trim() : "";
     this.search(query);
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log('update')
-    const prevQuery = prevProps.route.match.params.query ? prevProps.route.match.params.query.trim() : undefined;
-    const query = this.props.route.match.params.query ? this.props.route.match.params.query.trim() : undefined;
-
-    console.log(prevQuery, query);
+    const prevQuery = prevProps.match.params.query ? prevProps.match.params.query.trim() : undefined;
+    const query = this.props.match.params.query ? this.props.match.params.query.trim() : undefined;
 
     if (query && prevQuery !== query) {
       this.search(query);
@@ -36,10 +33,10 @@ class RepoList extends React.Component {
           <div className={styles.innerContainer}>
             <div><strong>{e.full_name}</strong></div>
             <div>{e.name}</div>
-            <FontAwesomeIcon icon="chevron-right" className={styles.arrow} />
+            <Link to={`/issues/${e.full_name}`}><FontAwesomeIcon icon="chevron-right" className={styles.arrow} /></Link>           
             <br />
             <div>{e.description}</div>
-            <Link to="/">{e.url}</Link>
+            <Link to={e.url}>{e.url}</Link>
           </div>
         </div>
       )

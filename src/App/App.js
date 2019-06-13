@@ -14,10 +14,11 @@ function App() {
   return (
     <Router>
       <div className="App">
+        <Header />
         <Switch>
-          <Route exact path="/issues/:repoId(\d+)/:page(\d+)?" render={(route) => <><Header route={route} /> <IssueList route={route} /></>} />
-          <Route exact path="/repos/:query/:page(\d+)?" render={(route) => <><Header route={route} /> <RepoList route={route} /></>} />
-          <Route exact path="/" render={(route) => <> <Header route={route} /> <Message route={route} /> </>} />
+          <Route exact path="/issues/:firstname/:lastname/:page(\d+)?" component={IssueList} />
+          <Route exact path="/repos/:query/:page(\d+)?" component={RepoList} />
+          <Route exact path="/" component={Message} />
           <Route render={() => <>Page not found!</>} />
         </Switch>
       </div>

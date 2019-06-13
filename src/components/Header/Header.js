@@ -12,8 +12,8 @@ const Header = props => (
                 <h4 className={styles.headH4}>learning project created by <span className={styles.underline}>John Doe</span></h4>
             </div>
         </div>
-        <div className={`${styles.headerContainer} ${styles.HeadUI}`}>
-            <Search route={props.route} />
+        <div className={`${styles.headerContainer} ${styles.headUI}`}>
+            <Search />
         </div>
     </div>);
 
