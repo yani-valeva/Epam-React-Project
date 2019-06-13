@@ -16,7 +16,7 @@ function App() {
       <div className="App">
         <Switch>
           <Route exact path="/issues/:repoId(\d+)/:page(\d+)?" render={(route) => <><Header route={route} /> <IssueList route={route} /></>} />
-          <Route exact path="/repos/:query/:page?" render={(route) => <><Header route={route} /> <RepoList route={route} /></>} />
+          <Route exact path="/repos/:query/:page(\d+)?" render={(route) => <><Header route={route} /> <RepoList route={route} /></>} />
           <Route exact path="/" render={(route) => <> <Header route={route} /> <Message route={route} /> </>} />
           <Route render={() => <>Page not found!</>} />
         </Switch>
