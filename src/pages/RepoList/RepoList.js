@@ -33,7 +33,7 @@ class RepoList extends React.Component {
           <div className={styles.innerContainer}>
             <div><strong>{e.full_name}</strong></div>
             <div>{e.name}</div>
-            <Link to={`/issues/${e.full_name}`}><FontAwesomeIcon icon="chevron-right" className={styles.arrow} /></Link>           
+            <Link to={`/issues/${e.full_name}/1`}><FontAwesomeIcon icon="chevron-right" className={styles.arrow} /></Link>           
             <br />
             <div>{e.description}</div>
             <Link to={e.url}>{e.url}</Link>
