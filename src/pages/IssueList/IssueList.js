@@ -5,7 +5,21 @@ import { Link } from 'react-router-dom';
 
 class IssueList extends React.Component {
     state = {
-        issueItems: []
+        issueItems: [],
+        issuesCount: 0,
+        issuesPerPage: 30
+    }
+
+    componentDidUpdate() {
+        const firstname = this.props.match.params.firstname;
+        const lastname = this.props.match.params.lastname;
+        const page = this.props.match.params.page;
+
+        if (this.state.page !== page) {
+            fetch(`https://api.github.com/repos/${firstname}/${lastname}/issues?page=${page}`)
+                .then(res => res.json())
+                .then(data => this.setState({ issueItems: data, page }));
+        }
     }
 
     componentDidMount() {
@@ -13,16 +27,24 @@ class IssueList extends React.Component {
         const lastname = this.props.match.params.lastname;
         const page = this.props.match.params.page;
 
+        fetch(`https://api.github.com/repos/${firstname}/${lastname}`)
+            .then(res => res.json())
+            .then(data => this.setState({ issuesCount: data.open_issues }));
+
         fetch(`https://api.github.com/repos/${firstname}/${lastname}/issues?page=${page}`)
             .then(res => res.json())
             .then(data => this.setState({ issueItems: data }));
     }
 
-    handleBack = () => {
-        this.props.history.goBack()
-    }
+    handleBack = () => this.props.history.goBack();
+
+    handleClick = (e) => console.log(e.target);
 
     render() {
+        const firstname = this.props.match.params.firstname;
+        const lastname = this.props.match.params.lastname;
+
+        const { issuesPerPage, issuesCount } = this.state;
 
         let labelsData = ({ labels }) => labels.map(label => {
             let divStyle = {
@@ -53,6 +75,11 @@ class IssueList extends React.Component {
             </div>
         ));
 
+        const pageNumbers = [];
+        for (let i = 1; i <= Math.ceil(issuesCount / issuesPerPage); i++) {
+            pageNumbers.push(i);
+        }
+
         const style = {
             cursor: 'pointer',
             marginLeft: '5px'
@@ -70,10 +97,7 @@ class IssueList extends React.Component {
                 <div className={styles.pagingContainer}>
                     <FontAwesomeIcon icon="chevron-left" className={styles.arrow} />
                     <div className={styles.numberContainer}>
-                        <Link to={`https://api.github.com/repos/mojombo/god/issues/1`} className={styles.page}>1</Link>
-                        <Link to={`https://api.github.com/repos/mojombo/god/issues/2`} className={`${styles.page} ${styles.active}`}>2</Link>
-                        <Link to={`https://api.github.com/repos/mojombo/god/issues/3`} className={styles.page}>3</Link>
-                        <Link to={`https://api.github.com/repos/mojombo/god/issues/4`} className={styles.page}>4</Link>
+                        {pageNumbers.map(number => <Link to={`/issues/${firstname}/${lastname}/${number}`} className={styles.page}>{number}</Link>)}
                     </div>
                     <FontAwesomeIcon icon="chevron-right" className={styles.arrow} />
                 </div>
