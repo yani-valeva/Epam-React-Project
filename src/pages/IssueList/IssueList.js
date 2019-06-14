@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './IssueList.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { withRouter } from 'react-router-dom';
 
 class IssueList extends React.Component {
     state = {
@@ -10,11 +11,15 @@ class IssueList extends React.Component {
     componentDidMount() {
         const firstname = this.props.match.params.firstname;
         const lastname = this.props.match.params.lastname;
-        console.log(firstname, lastname);
+
         fetch(`https://api.github.com/repos/${firstname}/${lastname}/issues`)
             .then(res => res.json())
             .then(data => this.setState({ issueItems: data}));
     }
+
+    handleBack = () => {
+        this.props.history.goBack()
+      }
 
     render() {
 
@@ -194,11 +199,15 @@ class IssueList extends React.Component {
             </div>
         ));
 
+        const style = {
+            cursor: 'pointer'
+        }
+
         return (
             <div className={styles.wrapper} >
                 <div className={styles.goBack}>
-                    <FontAwesomeIcon icon="chevron-left" className={styles.arrowLeft} />
-                    <div>GO BACK</div>
+                    <FontAwesomeIcon icon="chevron-left" className={styles.arrowLeft} onClick={this.handleBack} />
+                    <div style={style} onClick={this.handleBack}>GO BACK</div>
                 </div>
                 {issuesData}
             </div>
@@ -206,4 +215,4 @@ class IssueList extends React.Component {
     }
 }
 
-export default IssueList;
+export default withRouter(IssueList);
