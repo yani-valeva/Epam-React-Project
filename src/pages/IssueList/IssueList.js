@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './IssueList.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { withRouter } from 'react-router-dom';
 
 class IssueList extends React.Component {
     state = {
@@ -215,4 +214,4 @@ class IssueList extends React.Component {
     }
 }
 
-export default withRouter(IssueList);
+export default IssueList;
