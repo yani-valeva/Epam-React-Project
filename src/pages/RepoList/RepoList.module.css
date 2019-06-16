@@ -1,0 +1,31 @@
+.wrapper {
+    background-color: #E5E5E5;
+    padding-left: 18px;
+    padding-right: 18px;
+}
+
+.container {
+    padding: 15px 0px;
+    border-radius: 10px;
+    padding-left: 10px;
+}
+
+.searchedResult {
+    padding: 22px 0px;
+    padding-left: 10px;
+}
+
+.innerContainer {
+    border-left: 4px solid #CB4CB6;
+    padding-left: 13px;
+    padding-right: 13px;
+}
+
+.even {
+    background-color: #FFFFFF;
+}
+
+.arrow {
+    color: #999999;
+    float: right;   
+}

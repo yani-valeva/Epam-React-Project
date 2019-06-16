@@ -1,18 +1,28 @@
 import React from 'react';
-import './App.css';
-import Header from '../Header/Header';
+import Header from '../components/Header/Header';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import RepoList from '../pages/RepoList/RepoList';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import IssueList from '../pages/IssueList/IssueList';
+import Message from '../components/Message/Message';
 
-library.add(fab, faSearch);
+library.add(fab, faSearch, faChevronRight, faChevronLeft);
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-    </div>
-    
+    <Router>
+      <div className="App">
+        <Header />
+        <Switch>
+          <Route exact path="/issues/:firstname/:lastname/:page(\d+)?" component={IssueList} />
+          <Route exact path="/repos/:query" component={RepoList} />
+          <Route exact path="/" component={Message} />
+          <Route render={() => <>Page not found!</>} />
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
