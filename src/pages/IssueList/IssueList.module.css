@@ -10,6 +10,12 @@
     padding-bottom: 20px;
 }
 
+.goBackContainer {
+    display: flex;
+    color: #666666;
+    text-decoration: none;
+}
+
 .goBack {
     color: #666666;
     display: flex;

@@ -4,46 +4,43 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 
 class IssueList extends React.Component {
+    firstname = this.props.match.params.firstname;
+    lastname = this.props.match.params.lastname;
+    page = this.props.match.params.page || 1;
+    searchQuery = this.props.location.search.split('=')[1] || '';
+
     state = {
         issueItems: [],
         issuesCount: 0,
         issuesPerPage: 30
     }
 
-    componentDidUpdate() {
-        const firstname = this.props.match.params.firstname;
-        const lastname = this.props.match.params.lastname;
-        const page = this.props.match.params.page;
+    loadIssues = () => {
+        fetch(`https://api.github.com/repos/${this.firstname}/${this.lastname}/issues?page=${this.page}`)
+            .then(res => res.json())
+            .then(data => this.setState({ issueItems: data, page: this.page }));
+    };
 
-        if (this.state.page !== page) {
-            fetch(`https://api.github.com/repos/${firstname}/${lastname}/issues?page=${page}`)
-                .then(res => res.json())
-                .then(data => this.setState({ issueItems: data, page }));
+    componentDidUpdate() {
+        this.page = this.props.match.params.page || 1;
+
+        if (this.state.page !== this.page) {
+            this.loadIssues();
         }
     }
 
     componentDidMount() {
-        const firstname = this.props.match.params.firstname;
-        const lastname = this.props.match.params.lastname;
-        const page = this.props.match.params.page;
-
-        fetch(`https://api.github.com/repos/${firstname}/${lastname}`)
+        console.log(this.props.location.search);
+        fetch(`https://api.github.com/repos/${this.firstname}/${this.lastname}`)
             .then(res => res.json())
             .then(data => this.setState({ issuesCount: data.open_issues }));
 
-        fetch(`https://api.github.com/repos/${firstname}/${lastname}/issues?page=${page}`)
-            .then(res => res.json())
-            .then(data => this.setState({ issueItems: data }));
+        this.loadIssues();
     }
 
     handleBack = () => this.props.history.goBack();
 
-    handleClick = (e) => console.log(e.target);
-
     render() {
-        const firstname = this.props.match.params.firstname;
-        const lastname = this.props.match.params.lastname;
-
         const { issuesPerPage, issuesCount } = this.state;
 
         let labelsData = ({ labels }) => labels.map(label => {
@@ -81,25 +78,26 @@ class IssueList extends React.Component {
         }
 
         const style = {
-            cursor: 'pointer',
-            marginLeft: '5px'
+            marginLeft: '5px',
         }
+
+        const nextPage = +this.page + 1 < pageNumbers.length ? +this.page + 1 : pageNumbers.length;
 
         return (
             <div className={styles.wrapper} >
                 <div className={styles.listContainer}>
                     <div className={styles.goBack}>
-                        <FontAwesomeIcon icon="chevron-left" className={styles.arrow} onClick={this.handleBack} />
-                        <div style={style} onClick={this.handleBack}>GO BACK</div>
+                        <Link to={`/repos/${this.searchQuery}`} className={styles.goBackContainer} ><FontAwesomeIcon icon="chevron-left" className={styles.arrow} />
+                            <div style={style}>GO BACK</div></Link>
                     </div>
                     {issuesData}
                 </div>
                 <div className={styles.pagingContainer}>
-                    <FontAwesomeIcon icon="chevron-left" className={styles.arrow} />
+                    <Link to={`/issues/${this.firstname}/${this.lastname}/${(this.page - 1) || 1}`}><FontAwesomeIcon icon="chevron-left" className={styles.arrow} /></Link>
                     <div className={styles.numberContainer}>
-                        {pageNumbers.map(number => <Link to={`/issues/${firstname}/${lastname}/${number}`} className={styles.page}>{number}</Link>)}
+                        {pageNumbers.map(number => <Link key={`page-number-${number}`} to={`/issues/${this.firstname}/${this.lastname}/${number}`} className={`${styles.page} ${+this.page === number && styles.active}`}>{number}</Link>)}
                     </div>
-                    <FontAwesomeIcon icon="chevron-right" className={styles.arrow} />
+                    <Link to={`/issues/${this.firstname}/${this.lastname}/${nextPage}`}><FontAwesomeIcon icon="chevron-right" className={styles.arrow} /></Link>
                 </div>
             </div>
         );

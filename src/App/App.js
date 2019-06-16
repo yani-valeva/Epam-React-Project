@@ -17,7 +17,7 @@ function App() {
         <Header />
         <Switch>
           <Route exact path="/issues/:firstname/:lastname/:page(\d+)?" component={IssueList} />
-          <Route exact path="/repos/:query/:page(\d+)?" component={RepoList} />
+          <Route exact path="/repos/:query" component={RepoList} />
           <Route exact path="/" component={Message} />
           <Route render={() => <>Page not found!</>} />
         </Switch>
